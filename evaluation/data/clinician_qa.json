@@ -1,0 +1,92 @@
+[
+  {
+    "id": "0",
+    "role": "clinician",
+    "question": "What is a characteristic of mental illness that makes it challenging to treat in children?",
+    "answer": "Once mental illness develops, it becomes a regular part of your child's behavior. But it's not always easy to know when your child has a serious problem. Everyday stresses can cause changes in your child's behavior.",
+    "evidence": "Once mental illness develops, it becomes a regular part of your child's behavior. This makes it more difficult to treat. But it's not always easy to know when your child has a serious problem. Everyday stresses can cause changes in your child's behavior. For example, getting a new brother or sister or going to a new school may cause a child to temporarily act out.",
+    "document": "data\\curated_kb\\medlineplus\\medlineplus_0.txt",
+    "chunk_id": "medlineplus_0_parent_2_child_0"
+  },
+  {
+    "id": "1",
+    "role": "clinician",
+    "question": "What type of therapy is mentioned as being suitable for adolescents?",
+    "answer": "(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nConsulta con un terapeuta\n(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nTerapia conductual dialÃ©ctica para adolescentes\n(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nAsuntos relacionados\nCerebro de los adolescentes: 7 cosas que usted debe saber\n(Instituto Nacional de la Salud Mental)\nTambiÃ©n en\ninglÃ©s\nCinco formas de conocer mejor tus sentimientos\n(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nCÃ³mo ayudar a los niÃ±os y adolescentes a superar los acontecimientos catastrÃ³ficos y otras experiencias traumÃ¡ticas\n(Instituto Nacional de la Salud Mental)\nTambiÃ©n en\ninglÃ©s\nCÃ³mo enfrentar las emociones difÃ­ciles\n(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nÂ¿CÃ³mo puede la conexiÃ³n social ayudar a los niÃ±os y adolescentes a sentirse menos solos?",
+    "evidence": "(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nConsulta con un terapeuta\n(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nTerapia conductual dialÃ©ctica para adolescentes\n(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nAsuntos relacionados\nCerebro de los adolescentes: 7 cosas que usted debe saber\n(Instituto Nacional de la Salud Mental)\nTambiÃ©n en\ninglÃ©s\nCinco formas de conocer mejor tus sentimientos\n(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nCÃ³mo ayudar a los niÃ±os y adolescentes a superar los acontecimientos catastrÃ³ficos y otras experiencias traumÃ¡ticas\n(Instituto Nacional de la Salud Mental)\nTambiÃ©n en\ninglÃ©s\nCÃ³mo enfrentar las emociones difÃ­ciles\n(FundaciÃ³n Nemours)\nTambiÃ©n en\ninglÃ©s\nÂ¿CÃ³mo puede la conexiÃ³n social ayudar a los niÃ±os y adolescentes a sentirse menos solos?",
+    "document": "data\\curated_kb\\medlineplus\\medlineplus_26.txt",
+    "chunk_id": "medlineplus_26_parent_6_child_0"
+  },
+  {
+    "id": "2",
+    "role": "clinician",
+    "question": "What are the potential factors that can worsen an individual's mental health?",
+    "answer": "Over time, your mental health can change. For example, you may be dealing with a difficult situation, such as trying to manage a chronic illness, taking care of an ill relative, or facing money problems. The situation may wear you out and overwhelm your ability to cope with it.",
+    "evidence": "Over time, your mental health can change. For example, you may be dealing with a difficult situation, such as trying to manage a chronic illness, taking care of an ill relative, or facing money problems. The situation may wear you out and overwhelm your ability to cope with it. This can worsen your mental health. On the other hand, getting therapy may improve your mental health. What are the signs that I might have a mental health problem?",
+    "document": "data\\curated_kb\\medlineplus\\medlineplus_8.txt",
+    "chunk_id": "medlineplus_8_parent_6_child_0"
+  },
+  {
+    "id": "3",
+    "role": "clinician",
+    "question": "What type of symptoms do some anticonvulsant medications work better for than lithium?",
+    "answer": "Some anticonvulsant medications may also be used as mood stabilizers, as they work better than lithium for certain people, such as people with “mixed” symptoms of mania and depression or those with rapid-cycling bipolar disorder. Health care providers generally ask people taking anticonvulsants to participate in regular monitoring to check medication levels and assess side effects and potential interactions with other common medications. What should I know about mental health medications?",
+    "evidence": "Some anticonvulsant medications may also be used as mood stabilizers, as they work better than lithium for certain people, such as people with “mixed” symptoms of mania and depression or those with rapid-cycling bipolar disorder. Health care providers generally ask people taking anticonvulsants to participate in regular monitoring to check medication levels and assess side effects and potential interactions with other common medications. What should I know about mental health medications?",
+    "document": "data\\curated_kb\\nimh\\nimh_12.txt",
+    "chunk_id": "nimh_12_parent_26_child_0"
+  },
+  {
+    "id": "4",
+    "role": "clinician",
+    "question": "What is the primary function of the NIH NeuroBioBank?",
+    "answer": "El NIH NeuroBioBank trabaja con los centros de investigación participantes para poner muestras de cerebros a disposición de los investigadores que trabajan para comprender los trastornos cerebrales. El NeuroBioBank coordina las solicitudes de los investigadores y distribuye el tejido cerebral y otros recursos, incluidos registros médicos y datos clínicos (cuando están disponibles). Visite el sitio web del NIH NeuroBioBank para obtener más información en inglés sobre\ncómo puede ser donante de cerebro\n.",
+    "evidence": "El NIH NeuroBioBank trabaja con los centros de investigación participantes para poner muestras de cerebros a disposición de los investigadores que trabajan para comprender los trastornos cerebrales. El NeuroBioBank coordina las solicitudes de los investigadores y distribuye el tejido cerebral y otros recursos, incluidos registros médicos y datos clínicos (cuando están disponibles). Visite el sitio web del NIH NeuroBioBank para obtener más información en inglés sobre\ncómo puede ser donante de cerebro\n.",
+    "document": "data\\curated_kb\\nimh\\nimh_21.txt",
+    "chunk_id": "nimh_21_parent_8_child_0"
+  },
+  {
+    "id": "5",
+    "role": "clinician",
+    "question": "What is one outcome observed after implementing school-based life-skills programs with adolescent peer leaders and teachers?",
+    "answer": "Training of media professionals led to an average of 20% reduction in articles with inappropriate suicide reporting per month; implementing school-based life-skills programmes in 26 high-risk schools, with 318 adolescent peer leaders and 50 teachers trained, resulted in 87% of adolescents able to identify suicide warning signs and 71% reporting improved self-image; and capacitating more than 120 first responders and rescuers under the Helper of Psychiatric Emergency (HOPE) Task Force resulted in the assessment, management and safe referral of 828 cases for ongoing care\nIn\nUruguay\n, a national real-time surveillance system for suicide attempts has recently been established.",
+    "evidence": "Training of media professionals led to an average of 20% reduction in articles with inappropriate suicide reporting per month; implementing school-based life-skills programmes in 26 high-risk schools, with 318 adolescent peer leaders and 50 teachers trained, resulted in 87% of adolescents able to identify suicide warning signs and 71% reporting improved self-image; and capacitating more than 120 first responders and rescuers under the Helper of Psychiatric Emergency (HOPE) Task Force resulted in the assessment, management and safe referral of 828 cases for ongoing care\nIn\nUruguay\n, a national real-time surveillance system for suicide attempts has recently been established.",
+    "document": "data\\curated_kb\\who\\who_15.txt",
+    "chunk_id": "who_15_parent_18_child_0"
+  },
+  {
+    "id": "6",
+    "role": "clinician",
+    "question": "What is the guideline suggesting should NOT be used to treat anxiety disorders?",
+    "answer": "Health-care providers should keep in mind the possible adverse effects associated with antidepressant medication, the ability to deliver either intervention (in terms of expertise, and/or treatment availability), and individual preferences. Benzodiazepines, which have historically been prescribed for anxiety disorders, are generally not recommended for anxiety disorders because of their high potential for dependence as well as their limited long-term effectiveness.",
+    "evidence": "Health-care providers should keep in mind the possible adverse effects associated with antidepressant medication, the ability to deliver either intervention (in terms of expertise, and/or treatment availability), and individual preferences. Benzodiazepines, which have historically been prescribed for anxiety disorders, are generally not recommended for anxiety disorders because of their high potential for dependence as well as their limited long-term effectiveness.",
+    "document": "data\\curated_kb\\who\\who_26.txt",
+    "chunk_id": "who_26_parent_13_child_0"
+  },
+  {
+    "id": "7",
+    "role": "clinician",
+    "question": "What is the estimated years of potential life lost in bipolar disorder according to a systematic review and meta-analysis?",
+    "answer": "References\n(1) 2021 Global Burden of Disease (GBD) [online database]. Seattle: Institute for Health Metrics and Evaluation; 2024 (\nhttps://vizhub.healthdata.org/gbd-results/\n, accessed 13 August 2025). (2) Chan JKN, Tong CHY, Wong CSM, Chen EYH, Chang WC.",
+    "evidence": "References\n(1) 2021 Global Burden of Disease (GBD) [online database]. Seattle: Institute for Health Metrics and Evaluation; 2024 (\nhttps://vizhub.healthdata.org/gbd-results/\n, accessed 13 August 2025). (2) Chan JKN, Tong CHY, Wong CSM, Chen EYH, Chang WC. Life expectancy and years of potential life lost in bipolar disorder: systematic review and meta-analysis. Br J Psychiatry. 2022;221(3):567–76 (\nhttps://doi.org/10.1192/bjp.2022.19\n).",
+    "document": "data\\curated_kb\\who\\who_27.txt",
+    "chunk_id": "who_27_parent_24_child_0"
+  },
+  {
+    "id": "8",
+    "role": "clinician",
+    "question": "What type of risk factors may contribute to undermining mental health among workers in the informal economy?",
+    "answer": "More than half the global workforce works in the informal economy (2), where there is no regulatory protection for health and safety. These workers often operate in unsafe working environments, work long hours, have little or no access to social or financial\nprotections and face discrimination, all of which can undermine mental health. Although psychosocial risks can be found in all sectors, some workers are more likely to be exposed to them than others, because of what they do or where and how they work.",
+    "evidence": "More than half the global workforce works in the informal economy (2), where there is no regulatory protection for health and safety. These workers often operate in unsafe working environments, work long hours, have little or no access to social or financial\nprotections and face discrimination, all of which can undermine mental health. Although psychosocial risks can be found in all sectors, some workers are more likely to be exposed to them than others, because of what they do or where and how they work.",
+    "document": "data\\curated_kb\\who\\who_30.txt",
+    "chunk_id": "who_30_parent_6_child_0"
+  },
+  {
+    "id": "9",
+    "role": "clinician",
+    "question": "What is an example of a public health aspect of mental and neurological spectrum (MNS) services that may require national-level policy, planning, and leadership?",
+    "answer": "Accordingly, expressions of interest were sought from individuals with substantial, high-level expertise and experience (including those with lived experience of an MNS condition) in the following areas: Strategic direction, intersectoral coordination and programme management of public health aspects of MNS services at national level (policy, planning and leadership); Innovation in and/or integration of MNS service delivery and organization at the programmatic or sectoral level; Comparative epidemiology of MNS conditions (trends, future projections); Measurement, monitoring and surveillance of MNS service outputs and outcomes; Strategic advocacy, partnership promotion and making the case for MNS conditions; Ethics, equity, human rights and gender in the context of MNS health services.",
+    "evidence": "Accordingly, expressions of interest were sought from individuals with substantial, high-level expertise and experience (including those with lived experience of an MNS condition) in the following areas: Strategic direction, intersectoral coordination and programme management of public health aspects of MNS services at national level (policy, planning and leadership); Innovation in and/or integration of MNS service delivery and organization at the programmatic or sectoral level; Comparative epidemiology of MNS conditions (trends, future projections); Measurement, monitoring and surveillance of MNS service outputs and outcomes; Strategic advocacy, partnership promotion and making the case for MNS conditions; Ethics, equity, human rights and gender in the context of MNS health services.",
+    "document": "data\\curated_kb\\who\\who_8.txt",
+    "chunk_id": "who_8_parent_5_child_0"
+  }
+]
