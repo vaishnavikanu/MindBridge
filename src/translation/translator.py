@@ -77,7 +77,7 @@ class Translator:
 
         self.tokenizer.src_lang = LANGUAGE_CODES[source_language]
 
-        if target_language == "en" and len(text.split()) < 8:
+        if len(text.split()) < 8:
             text = (
                 "Translate the following mental health query "
                 "into natural English while preserving its meaning:\n\n"
@@ -95,11 +95,10 @@ class Translator:
                 forced_bos_token_id=self.tokenizer.convert_tokens_to_ids(
                     LANGUAGE_CODES[target_language]
                 ),
-                max_new_tokens=512,
-                num_beams=5,
+                max_new_tokens=256,
+                num_beams=4,
                 early_stopping=True,
                 repetition_penalty=1.2,
-                length_penalty=1.0,
                 no_repeat_ngram_size=3,
             )
 

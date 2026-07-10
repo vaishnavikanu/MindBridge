@@ -184,8 +184,8 @@ class OllamaGenerator(BaseGenerator):
         self.last_prompt = ""
 
     def generate(self, prompt: str, **kwargs) -> str:
-        max_new_tokens = kwargs.get("max_new_tokens", 512)
-        temperature = kwargs.get("temperature", 0.5)
+        max_new_tokens = kwargs.get("max_new_tokens", 256)
+        temperature = kwargs.get("temperature", 0)
         top_p = kwargs.get("top_p", 0.9)
 
         response = requests.post(
@@ -194,11 +194,10 @@ class OllamaGenerator(BaseGenerator):
                 "model": self.model,
                 "prompt": prompt,
                 "stream": False,
-                "options": {
-                    "temperature": temperature,
-                    "top_p": top_p,
-                    "num_predict": max_new_tokens,
-                    "repeat_penalty": 1.1,
+                "options":{
+                "temperature": temperature,
+                "top_p": top_p,
+                "num_predict": max_new_tokens,
                 }
             }
         )
@@ -210,11 +209,7 @@ class OllamaGenerator(BaseGenerator):
             logger.error(f"Ollama error: {response.text}")
             return "Error generating response"
 
-        result = response.json()
-
-        
-
-        answer = result["response"].strip()
+        answer = response.json()["response"].strip()
         return answer
 
     def generate_with_context(self, query: str, context_chunks: List[RetrievalResult], role: str, **kwargs) -> str:
@@ -228,96 +223,40 @@ class OllamaGenerator(BaseGenerator):
             return "No relevant context found."
 
         context_parts = []
-
         for i, chunk in enumerate(chunks[:5]):
-
             source = chunk.chunk.metadata.get("source", "Unknown")
-            text = chunk.chunk.text
-
-            # Remove unrelated headings that confuse the LLM
-            unwanted = [
-                "Relapse Prevention",
-                "Evidence Base",
-                "Creating a plan for maintaining gains"
-            ]
-
-            for phrase in unwanted:
-                text = text.replace(phrase, "")
-
             context_parts.append(
-                f"[Source: {source} | Rank: {i+1}]\n{text}"
+            f"[Source: {source} | Rank: {i+1} | Chunk: {chunk.chunk.chunk_id}]\n"
+            + chunk.chunk.text
             )
 
         return "\n\n---\n\n".join(context_parts)
-    
+
     def _build_prompt(self, query: str, context: str, role: str) -> str:
         if role == "patient":
-            return f"""
-You are MindBridge, a compassionate AI mental health assistant.
+            return f"""You are a retrieval-augmented mental health assistant.
 
-The information below is background knowledge only.
+Your answers must be supported by the retrieved context.
+Do not use outside knowledge.
 
-IMPORTANT RULES:
-
-- Never mention "context".
-- Never mention "source".
-- Never mention "rank".
-- Never mention "chunk".
-- Never mention WHO or MedlinePlus.
-- Never copy the background text word for word.
-- Speak naturally like a caring mental health counselor.
-- Respond ONLY in the same language as the user's question.
-- If the user writes in Telugu, answer only in Telugu.
-- If the user writes in Hindi, answer only in Hindi.
-- If the user writes in English, answer only in English.
-- Show empathy.
-- Give practical emotional support.
-- Keep the response under 150 words.
-- End with a gentle follow-up question.
-
-Background Information:
+Context:
 {context}
 
-User:
+User Query:
 {query}
 
-MindBridge:
-"""
+Answer:"""
 
         elif role == "clinician":
-            return f"""
-You are an evidence-based Clinical Decision Support Assistant.
+            return f"""You are a clinical assistant.
 
-STRICT RULES:
-
-- Start your answer immediately with the heading "Clinical Overview".
-- NEVER begin with phrases like:
-  - "Here is the response"
-  - "Here is the clinical response"
-  - "Certainly"
-  - "Below is the answer"
-  - "The response is"
-- Do NOT greet the user.
-- Do NOT add introductory sentences.
-- Do NOT mention retrieved context or sources.
-- Ignore chapter titles such as "Relapse Prevention" or "Evidence Base".
-- Use ONLY information supported by the retrieved context.
-- If the context is insufficient, explicitly state that.
-
-Return ONLY the following sections:
-
-## Clinical Overview
-## Assessment / Diagnosis
-## Evidence-Based Management
-## Important Considerations
-## Follow-up / Referral
-
-Retrieved Context:
+Context:
 {context}
 
 Clinical Query:
 {query}
-"""
+
+Answer:"""
 
         else:
             return f"""Context:

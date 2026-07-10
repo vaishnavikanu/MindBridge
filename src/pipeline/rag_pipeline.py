@@ -329,16 +329,6 @@ class RAGPipeline:
             top_k,
         )
 
-        print("=" * 80)
-        print("Retrieved Chunks")
-
-        for i, r in enumerate(reranked):
-            print(f"\nChunk {i+1}")
-            print(r.chunk.metadata.get("source"))
-            print(r.chunk.text[:800])
-
-        print("=" * 80)    
-        
         response = self.generator.generate_with_context(
             processed_query.english_query,
             reranked,

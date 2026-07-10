@@ -39,7 +39,6 @@ class QueryProcessor:
             confidence=language.confidence,
         )
 
-    
     def restore_response(
         self,
         response: str,
@@ -49,17 +48,8 @@ class QueryProcessor:
         if not processed_query.translation_required:
             return response
 
-        # Split the response into paragraphs
-        paragraphs = [p.strip() for p in response.split("\n\n") if p.strip()]
-
-        translated_parts = []
-
-        for paragraph in paragraphs:
-            translated = self.translator.translate(
-                text=paragraph,
-                source_language="en",
-                target_language=processed_query.language,
-            )
-            translated_parts.append(translated)
-
-        return "\n\n".join(translated_parts)
+        return self.translator.translate(
+            text=response,
+            source_language="en",
+            target_language=processed_query.language,
+        )
