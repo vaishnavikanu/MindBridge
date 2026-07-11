@@ -5,9 +5,33 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-Overview
+## 📦 Reproducibility
+
+This repository serves as the **downloadable installation package** accompanying the EMNLP system demonstration.
+
+**Latest Release**
+
+https://github.com/vaishnavikanu/MindBridge/releases/latest
+
+
+## Prerequisites
+
+Before running MindBridge, install the following software:
+
+### System Requirements
+
+- Python 3.10 or later
+- Git
+- Node.js (v18+ recommended)
+- npm (comes with Node.js)
+- PostgreSQL (v14 or later)
+- Ollama (Install Ollama from: https://ollama.com)
+- NVIDIA GPU with CUDA support (recommended for faster inference) else works with CPU too
+
+  
+## Overview
 This repository contains a modular Retrieval-Augmented Generation (RAG) system for mental-health assistance featuring role-aware retrieval, graph-enhanced retrieval, privacy-isolated vector stores, dual embedding models, Cross-Encoder reranking, and local LLM generation using Ollama.
-Key Features
+## Key Features
 Role-aware retrieval (Patient / Clinician)
 Privacy-isolated FAISS indexes
 Dual embeddings (SBERT + MedCPT)
@@ -17,15 +41,19 @@ Parent-child chunking
 Local LLM inference (Ollama / Llama 3)
 End-to-end evaluation
 Ablation framework
-Repository Structure
+## Repository Structure
 ```text
-configs/
-data/
-evaluation/
-scripts/
-src/
-requirements.txt
-README.md
+MindBridge/
+│
+├── backend/
+├── frontend/
+├── configs/
+├── data/
+├── evaluation/
+├── scripts/
+├── src/
+├── requirements.txt
+└── README.md
 ```
 # 🏗️ System Architecture
 
@@ -36,31 +64,40 @@ flowchart LR
 
 A[User Query]
 
-A --> B{Role}
+A --> B[Language Detection<br/>Lingua]
 
-B -->|Patient| C[SBERT Embedding]
-B -->|Clinician| D[MedCPT Embedding]
+B --> C{English?}
 
-C --> E[Patient Retriever]
-D --> F[Clinician Retriever]
+C -->|No| D[Translation<br/>NLLB-200]
+C -->|Yes| E[Original Query]
 
-E --> G[Dense Retrieval]
-E --> H[BM25 Retrieval]
+D --> F{User Role}
+E --> F
 
-G --> I[RRF Fusion]
-H --> I
+F -->|Patient| G[SBERT Embedding]
+F -->|Clinician| H[MedCPT Embedding]
 
-F --> J[Dense Clinical Retrieval]
-J --> K[Knowledge Graph Expansion]
+G --> I[Patient Retriever]
+H --> J[Clinician Retriever]
 
-I --> L[Reranker]
-K --> L
+I --> K[Dense Retrieval]
+I --> L[BM25 Retrieval]
 
-L --> M[Prompt Builder]
+K --> M[RRF Fusion]
+L --> M
 
-M --> N[Ollama - Llama 3]
+J --> N[Dense Clinical Retrieval]
 
-N --> O[Grounded Response]
+N --> O[Knowledge Graph Expansion]
+
+M --> P[CrossEncoder Reranker]
+O --> P
+
+P --> Q[Role-Aware Prompt Builder]
+
+Q --> R[Ollama<br/>Llama 3]
+
+R --> S[Grounded Response]
 ```
 
 ---
@@ -195,11 +232,10 @@ No patient embeddings are stored inside clinician indexes, and clinician-specifi
 | Reranker | BAAI/bge-reranker-base |
 | Generator | Ollama (Llama 3) |
 | Framework | PyTorch + Hugging Face |
+| Language Detection | Lingua |
+| Translation | facebook/nllb-200-distilled-600M |
 
-The Hugging Face models download automatically on first use. Install the generator separately:
-```bash
-ollama pull llama3
-```
+All Hugging Face models are downloaded automatically during the first execution and cached locally for future runs.
 
 The following Hugging Face models are used by the system and will be cached automatically during the first execution:
 
@@ -209,24 +245,43 @@ The following Hugging Face models are used by the system and will be cached auto
 - facebook/nllb-200-distilled-600M
 
   
-Installation
+## Installation
 ```bash
-git clone <repo>
-cd <repo>
+git clone https://github.com/vaishnavikanu/MindBridge.git
+cd MindBridge
 python -m venv .venv
+
+# Linux / macOS
 source .venv/bin/activate
+
+# Windows (PowerShell)
+# .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+
+Install the required Ollama model:
+
+```bash
+ollama pull llama3
 ```
 
-Datasets
-CounselChat (patient evaluation)
-Curated clinician benchmark (corpus-aligned evaluation)
+Start the Ollama server (if not already running):
+
+```bash
+ollama serve
+```
+
+```
+
+## Datasets
+- CounselChat (patient-oriented evaluation)
+- ClinicianQA (curated clinician benchmark)
 Place datasets under `evaluation/data/`.
-Build Knowledge Base
+
+## Build the Knowledge Base
 ```bash
 python scripts/ingest.py
 ```
-Run Queries
+## Run Queries
 Patient:
 ```bash
 python scripts/query.py --role patient --user-id patient_001 --query "I feel anxious."
@@ -235,25 +290,28 @@ Clinician:
 ```bash
 python scripts/query.py --role clinician --user-id clinician_001 --query "DSM-5 criteria for MDD"
 ```
-Evaluation
+## Evaluation
 ```bash
 python -m evaluation.run_evaluation
 ```
-Ablation
+## Ablation Study
 ```bash
 python -m evaluation.run_ablation
 ```
-Experiments:
-Dense
-Graph
-Role-Aware
-Full
+Supported retrieval configurations:
+
+- Dense Retrieval
+- Dense + Graph Retrieval
+- Role-Aware Retrieval
+- Full MindBridge
+
+  
 Outputs are written to `evaluation/results/`.
-Configuration
+## Configuration
 All runtime settings are in `configs/config.yaml`.
-Hardware
+## Hardware
 Experiments were performed on CUDA-enabled NVIDIA GPUs (Tesla V100 / A100 class). CPU execution is supported but slower.
-Troubleshooting
+## Troubleshooting
 Verify CUDA:
 ```bash
 python -c "import torch; print(torch.cuda.is_available())"
@@ -323,7 +381,7 @@ http://localhost:5173
 
 - Secure authentication for Patients and Clinicians
 - Role-based dashboards
-- AI-powered multilingual chatbot
+- AI-powered role-aware multilingual chatbot
 - Mood tracking and journaling
 - Chat history management
 - Patient history access for clinicians
@@ -332,5 +390,6 @@ http://localhost:5173
 - PostgreSQL-backed data management
 - Dark mode support
 
-License
-MIT
+## 📄 License
+
+This project is released under the MIT License.
