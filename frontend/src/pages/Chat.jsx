@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import API from "../api/api";
+import API, { API_BASE_URL } from "../api/api";
 import { FaPaperclip } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
 function Chat({ newChat, darkMode }) {
@@ -460,7 +460,7 @@ function Chat({ newChat, darkMode }) {
                 {msg.attachments?.map((file) => (
                   <a
                     key={file.id}
-                    href={`http://localhost:8000/${file.file_path}`}
+                    href={`${API_BASE_URL}/${file.file_path}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="

@@ -22,6 +22,7 @@ Repository Structure
 configs/
 data/
 evaluation/
+frontend/
 scripts/
 src/
 requirements.txt
@@ -181,6 +182,20 @@ No patient embeddings are stored inside clinician indexes, and clinician-specifi
 
 ---
 
+## Prerequisites
+
+Before running MindBridge, install the following software:
+
+### System Requirements
+
+- Python 3.10 or later
+- Git
+- Node.js (v18+ recommended)
+- npm (comes with Node.js)
+- PostgreSQL (v14 or later)
+- Ollama
+- NVIDIA GPU with CUDA support (recommended for faster inference) else works with CPU too
+
 # 🧠 Core Components
 
 | Component | Implementation |
@@ -214,9 +229,18 @@ Installation
 git clone <repo>
 cd <repo>
 python -m venv .venv
+```
+For Windows:
+```bash
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+For Linux/macOS:
+```bash
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
 
 Datasets
 CounselChat (patient evaluation)
@@ -272,13 +296,13 @@ The project also includes a React.js frontend integrated with the FastAPI backen
 Create a `.env` file in the project root and configure your PostgreSQL connection:
 
 ```env
-DATABASE_URL=postgresql://postgres:YOUR_PASSWORD@localhost:5432/mindbridge
+DATABASE_URL=postgresql+psycopg2://postgres:YOUR_PASSWORD@localhost:5432/your_db_name
 ```
 
 Run the backend:
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn src.api.main:app --reload
 ```
 
 Backend:
@@ -302,6 +326,15 @@ Navigate to the frontend directory:
 ```bash
 cd frontend
 npm install
+```
+
+Create a `.env` file inside the frontend directory:
+
+```env
+VITE_API_BASE_URL=http://127.0.0.1:8000
+```
+start the frontend:
+```bash
 npm run dev
 ```
 
@@ -317,6 +350,7 @@ http://localhost:5173
 
 - PostgreSQL must be running before starting the backend.
 - Configure the database connection in the `.env` file before running the application.
+- Configure `VITE_API_BASE_URL` in `frontend/.env`.
 - Start the backend before launching the frontend.
 
 ## Web Application Features
