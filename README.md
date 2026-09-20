@@ -43,6 +43,7 @@ End-to-end evaluation
 Ablation framework
 ## Repository Structure
 ```text
+app/
 configs/
 data/
 frontend/
